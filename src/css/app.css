@@ -5,7 +5,7 @@
 }
 
 .titleBar {
-    background-color: var(--neutral-800);
+    background-color: var(--titleBar);
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -13,12 +13,12 @@
     padding: 1rem;
 }
 
-.logo img {
+.invert {
  filter: invert(1);
 }
 
 .themeToggle {
-    background-color: var(--neutral-700);
+    background-color: var(--themeToggle);
     width: 45px;
     height: 45px;
     display: flex;
@@ -36,28 +36,28 @@
 }
 
 .extensionsTitle h1 {
-    color: var(--neutral-0);
+    color: var(--headingClr);
 }
 
 .extensionsFilter button {
-    border: 1px solid var(--neutral-600);
-    background-color: var(--neutral-700);
+    border: 1px solid var(--neutral-300);
+    background-color: var(--filterBtn);
     padding: 0.5rem 1rem;
     margin: 0 5px;
     border-radius: 50px;
-    color: var(--neutral-0);
+    color: var(--filterBtnClr);
     font-family: inherit;
     font-size: 16px;
 }
 
 .extensionsFilter button:hover {
-    background-color: var(--neutral-600);
+    background-color: var(--filterBtnHover);
     cursor: pointer;
 }
 
 .extensionsFilter button.selected {
     background-color: var(--red-400);
-    color: var(--neutral-900);
+    color: var(--filterBtnSelectedClr);
     border-color: var(--red-400);
 }
 
@@ -66,4 +66,29 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+}
+
+@media (max-width: 956px) {
+    .extensionsItems {
+        grid-template-columns: repeat(2, 1fr);
+    }  
+}
+
+@media (max-width: 637px) {
+    .extensionsItems {
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+    }  
+
+    .extensionsItem {
+        margin: 0 auto;
+    }
+
+    .extensionsWrapper {
+        flex-direction: column;
+    }
+
+    .extensionsFilter {
+        margin-top: 1rem;
+    }
 }

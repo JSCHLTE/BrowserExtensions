@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
 import Card from './Card'
 import './css/base.css'
 import './css/variables.css'
@@ -10,6 +9,7 @@ import data from  '../data.json'
 function App() {
 
   const [extensions, setExtensions] = useState(data);
+  const [lightMode, setLightMode] = useState(false);
   const [all, setAll] = useState(true);
   const [active, setActive] = useState(false);
   const [inactive, setInactive] = useState(false);
@@ -19,6 +19,14 @@ function App() {
     setActive(param === 'Active');
     setInactive(param === 'Inactive');
   };
+
+  const handleTheme = () => {
+    setLightMode(prevTheme => (!prevTheme));
+  }
+
+  useEffect(() => {
+    lightMode ? document.body.classList.add('lightMode') : document.body.classList.remove('lightMode');
+  }, [lightMode])
   
 
   const handleSwitch = (name) => {
@@ -34,11 +42,11 @@ function App() {
     <main>
       <div className='innerWrapper'>
         <div className='titleBar'>
-            <div className='logo'>
+            <div className={`logo ${lightMode ? '' : 'invert'}`}>
               <img src='BrowserExtensions/src/assets/images/logo.svg' alt='Extensions Logo' draggable='false'/>
             </div>
-            <div className='themeToggle'>
-            <img src='BrowserExtensions/src/assets/images/icon-sun.svg' alt='Extensions Logo' draggable='false' />
+            <div className='themeToggle' onClick={handleTheme}>
+            <img src={lightMode ? 'BrowserExtensions/src/assets/images/icon-moon.svg' : 'BrowserExtensions/src/assets/images/icon-sun.svg'} alt='Extensions Logo' draggable='false' />
             </div>
           </div>
 

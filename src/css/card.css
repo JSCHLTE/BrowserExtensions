@@ -1,5 +1,5 @@
 .extensionsItem {
-    background-color: var(--neutral-800);
+    background-color: var(--card);
     border: 1px solid var(--neutral-600);
     border-radius: 20px;
     display: flex;
@@ -26,13 +26,13 @@
 }
 
 .itemDesc h4 {
-    color: var(--neutral-0);
+    color: var(--cardTitle);
     font-size: 1.25rem;
 }
 
 .itemDesc p {
     margin-top: 5px;
-    color: var(--neutral-300);
+    color: var(--cardDesc);
 }
 
 .itemUtil {
@@ -41,19 +41,20 @@
 }
 
 .itemUtil button {
-    background-color: var(--neutral-800);
-    border: 1px solid var(--neutral-600);
-    color: var(--neutral-0);
+    background-color: var(--cardBtn);
+    border: 1px solid var(--neutral-300);
+    color: var(--cardBtnClr);
     border-radius: 20px;
     padding: 0.5rem 1rem;
     font-family: inherit;
     font-size: 16px;
+    font-weight: 500;
 }
 
 .itemUtil button:hover {
     background-color: var(--red-400);
     border-color: var(--red-400);
-    color: var(--neutral-900);
+    color: var(--cardBtnHoverClr);
     cursor: pointer;
 }
 
@@ -89,13 +90,17 @@
     width: 18px;
     left: 4px;
     bottom: 4px;
-    background-color: var(--neutral-0);
+    background-color: #fff;
     transition: 0.4s;
     border-radius: 50%;
   }
 
   input:checked + .slider {
     background-color: var(--red-400);
+  }
+
+  input:checked + .slider:hover {
+    background-color: var(--red-500);
   }
 
   input:checked + .slider::before {
