@@ -22,14 +22,11 @@ function App() {
   const [inactive, setInactive] = useState(false);
 
   useEffect(() => {
-    lightMode ? document.body.classList.add('lightMode') : document.body.classList.remove('lightMode');
-  }, [lightMode])
-
-  useEffect(() => {
     localStorage.setItem('extensions', JSON.stringify(extensions));
   }, [extensions]);
 
   useEffect(() => {
+    lightMode ? document.body.classList.add('lightMode') : document.body.classList.remove('lightMode');
     localStorage.setItem('theme', JSON.stringify(lightMode));
   }, [lightMode]);
 
