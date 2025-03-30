@@ -55,10 +55,10 @@ function App() {
       <div className='innerWrapper'>
         <div className='titleBar'>
             <div className={`logo ${lightMode ? '' : 'invert'}`}>
-              <img src='BrowserExtensions/src/assets/images/logo.svg' alt='Extensions Logo' draggable='false'/>
+              <img src='images/logo.svg' alt='Extensions Logo' draggable='false'/>
             </div>
             <div className='themeToggle' onClick={handleTheme} tabIndex={0}>
-            <img src={lightMode ? 'BrowserExtensions/src/assets/images/icon-moon.svg' : 'BrowserExtensions/src/assets/images/icon-sun.svg'} alt='Extensions Logo' draggable='false' />
+            <img src={lightMode ? 'images/icon-moon.svg' : 'images/icon-sun.svg'} alt='Extensions Logo' draggable='false' />
             </div>
           </div>
 
