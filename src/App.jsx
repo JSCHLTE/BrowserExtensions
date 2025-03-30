@@ -8,11 +8,30 @@ import data from  '../data.json'
 
 function App() {
 
-  const [extensions, setExtensions] = useState(data);
-  const [lightMode, setLightMode] = useState(false);
+  const [extensions, setExtensions] = useState(() => {
+    const localExtensions = localStorage.getItem('extensions');
+    return localExtensions ? JSON.parse(localExtensions) : data 
+  });
+  const [lightMode, setLightMode] = useState(() => {
+    const localTheme = localStorage.getItem('theme')
+    return localTheme ? JSON.parse(localTheme) : false
+  });
+
   const [all, setAll] = useState(true);
   const [active, setActive] = useState(false);
   const [inactive, setInactive] = useState(false);
+
+  useEffect(() => {
+    lightMode ? document.body.classList.add('lightMode') : document.body.classList.remove('lightMode');
+  }, [lightMode])
+
+  useEffect(() => {
+    localStorage.setItem('extensions', JSON.stringify(extensions));
+  }, [extensions]);
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(lightMode));
+  }, [lightMode]);
 
   const handleFilter = (param) => {
     setAll(param === 'All');
@@ -23,10 +42,6 @@ function App() {
   const handleTheme = () => {
     setLightMode(prevTheme => (!prevTheme));
   }
-
-  useEffect(() => {
-    lightMode ? document.body.classList.add('lightMode') : document.body.classList.remove('lightMode');
-  }, [lightMode])
   
 
   const handleSwitch = (name) => {
@@ -45,7 +60,7 @@ function App() {
             <div className={`logo ${lightMode ? '' : 'invert'}`}>
               <img src='BrowserExtensions/src/assets/images/logo.svg' alt='Extensions Logo' draggable='false'/>
             </div>
-            <div className='themeToggle' onClick={handleTheme}>
+            <div className='themeToggle' onClick={handleTheme} tabIndex={0}>
             <img src={lightMode ? 'BrowserExtensions/src/assets/images/icon-moon.svg' : 'BrowserExtensions/src/assets/images/icon-sun.svg'} alt='Extensions Logo' draggable='false' />
             </div>
           </div>

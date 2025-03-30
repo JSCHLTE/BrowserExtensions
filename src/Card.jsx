@@ -15,7 +15,7 @@ const Card = ({ thumbnail, name, desc, active, handleSwitch }) => {
       <div className='itemUtil'>
         <button>Remove</button>
           <label className="switch">
-            <input type="checkbox" checked={active} onChange={() => handleSwitch(name)}/>
+            <input type="checkbox" checked={active} onChange={() => handleSwitch(name)} />
             <span className="slider"></span>
           </label>
       </div>
